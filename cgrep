@@ -13,4 +13,4 @@ fi
 
 #find "$2" \( ! -name tags ! -name *.taghl ! -name *.swp \) -o -path "$2"/.git -prune | xargs grep -rn --color=always "$1"
 #find "$2" -type f ! -name tags ! -name *.taghl ! -name *.swp ! -name *.o ! -path "$2/.git/*" | xargs grep -rn --color=always "$1" | awk -F : '{print $1" +"$2" "$3}'
-find "$2" -type f ! -name tags ! -name "*.taghl" ! -name "*.swp" ! -name "*.o" ! -path "$2/.git/*" | xargs grep -rn --color=always "$1" | awk -F : '{print "+"$2"\t"$1" "$3}'
+find "$2" -type f ! -name "*.d" ! -name tags ! -name "*.taghl" ! -name "*.swp" ! -name "*.o" ! -path "$2/.git/*" | xargs grep -rn --color=always "$1" | awk -F : '{print "+"$2"\t"$1" "$3}'
