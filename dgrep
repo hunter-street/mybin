@@ -1,0 +1,16 @@
+#!/bin/bash
+#
+# Recursivly grep in given directory
+# Written by Dalong.Z
+
+# version 2014.05.28
+
+if [[ $# -ne 2 ]]
+then
+  echo "$0 <patten> <directory>" 
+  exit 1
+fi
+
+#find "$2" \( ! -name tags ! -name *.taghl ! -name *.swp \) -o -path "$2"/.git -prune | xargs grep -rn --color=always "$1"
+#find "$2" -type f ! -name tags ! -name *.taghl ! -name *.swp ! -name *.o ! -path "$2/.git/*" | xargs grep -rn --color=always "$1" | awk -F : '{print $1" +"$2" "$3}'
+find "$2" -type f ! -name "*.d" ! -name tags ! -name "*.taghl" ! -name "*.swp" ! -name "*.o" ! -name "*.o.fpp.c" ! -name "*.fpp.c" ! -path "$2/.git/*" ! -path "$2/.repo/*" ! -path "$2/out/*" ! -path "$2/module_evaluation_tool/*" ! -path "$2/production_test_limits/*" ! -path "$2/development_tools/*" | xargs grep -rn --color=always "$1" | awk -F : '{print "+"$2"\t"$1" "$3}'
